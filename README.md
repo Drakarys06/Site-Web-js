@@ -23,11 +23,19 @@ GameOnWeb :
 
 Persona : 
 
-Lena ElBlonde : âge 16 ans, au lycée, a envie de se divertir sur internet et cherche un site où elle puisse jouer en toute tranquillité. Elle cherche également à s’améliorer dans les différents jeux qu’elle joue et souhaite avoir un suivi de ses parties.
+Lena ElBlonde : âge 16 ans, au lycée, 
+ - Cherche à voir une progression dans ses scores
+ - Veut jouer à des jeux simples et rapide 
+ 
+Enzo Uncryzer : 20 ans, chômage, 
+ - Cherche à faire le meilleur score.
+ - Ne veux pas rencontrer de bug 
 
-Enzo Uncryzer : 20 ans, chômage, cherche tout le temps à découvrir de nouveau jeu afin d’accomplir tous les succès disponible de ce jeu. Il cherche toujours à être le meilleur. 
-(cherche à faire le meilleurs score possible) 
 
-Nicolas ELCEO: 20 ans, étudiant en informatique cherche un jeu pour tuer le temps car il est trop fort et trop intelligent mais est un gros rat. (cherche tout les succès)
+Nicolas ELCEO: 20 ans, étudiant en informatique 
+ - Cherche à faire tous les succès
+ - Pas de latence dans entre le click et l'action
 
-Thomas LeChill : 21 ans, travailleur, Cherche juste a jouer de manière tranquille pour se détendre (joue de manière tranquille facile)
+Thomas LeChill : 21 ans, travailleur, 
+ - Cherche à jouer de manière occasionnel et de manière tranquille
+ - Lance des parties rapidement
