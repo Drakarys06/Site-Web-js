@@ -32,7 +32,7 @@ Enzo Uncryzer : 20 ans, chômage,
 
 
 Nicolas ELCEO: 20 ans, étudiant en informatique 
- - Cherche à faire tous les succès
+ - Cherche à faire tous les succès et débloquer tout 
  - Pas de latence dans entre le click et l'action
 
 Thomas LeChill : 21 ans, travailleur, 
