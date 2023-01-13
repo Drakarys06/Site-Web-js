@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background: rgb(251,252,252);
+}
+a{
+    text-decoration: none;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 30px; 
+    margin:auto;
+    width: 1000px;
+    overflow: auto;
+    box-shadow:0 0 10px rgb(8,8,5) ;
+}
+nav{
+    height: 90px;
+    width: 100%;
+}
+.logo{
+    width: 70px;
+    height: 60px;
+    padding: 0 8px;
+    margin-top: 8px;
+}
+.navbar{
+    display: flex;
+}
+nav ul{
+    margin-left: 150px;
+}
+nav ul li{
+    margin: 0 5px;
+    line-height: 80px;
+    display: inline-block;
+}
+nav ul li a{
+font-size: 16px;
+padding: 7px 13px;
+color: rgb(79,79,95);
+}
+a:hover{
+    color:rgb(8,8,5);
+    border-bottom: 1px solid rgb(8,8,53);
+}
+
+.body-box{
+display: flex;
+margin: top 2.5rem;
+}
+.body-text{
+   width:50%;
+   padding: 18px; 
+}
+.body-text h1{
+    font: size 3rem;
+    color:black
+}
+span{
+color: blueviolet;
+}
+.body-pic img{
+width: 400px;
+border-bottom-left-radius: 50%;
+border-top-left-radius: 50%;
+border-bottom-right-radius: 50%;
+}
+.body-text p{
+    margin-top: 15px;
+    font-size: 13px;
+    color: rgb(8,8,5);
+}
+.btn{
+    border:none;
+    outline: none;
+    color:black;
+    cursor: pointer;
+    margin-top: 40px;
+    padding: 5px 20px;
+    border-radius: 30px;
+    border: 1px solid #333;
+}
+body {
+    background-color:white;
+}
+
+p {
+    color: red;
+}
+img {
+    border-radius:50%;
+    
+}
+head{
+    background-color: darkolivegreen;
+}
+.titre { 
+    
+    border:5px double #28c9ac;
+    text-align:center;
+    width:50%; 
+    background-color: #FFF;
+    color: #333
+}
+
+#unique {
+    color: blue;
+    font-size: 12px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+[data-tab-content]{
+    display:none;
+}
+.active[data-tab-content]{
+    display:block;
+}
+.tabs {
+    display:flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgb(8,8,5);
+}
+.tab{
+    cursor:pointer;
+    padding: 10px;
+}
+.tab.active{
+background-color: #FFF;
+}
+.tab:hover{
+    background-color: #FFF;
+}
+.tab-content {
+    margin-left: 20px;
+    margin-right:20px;
+
+}
