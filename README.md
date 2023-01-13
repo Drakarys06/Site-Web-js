@@ -46,6 +46,6 @@ Thomas LeChill : 21 ans, travailleur,
   - 2 : Enzo cherche à consulter le classement général, il click donc sur le page Classement afin de voir le classement de tout les jeux
   - 3 : Nicolas cherche à voir le nombre de succès qu'il a débloqué en jouant, il va donc choisir d'aller sur la page succès afin de les voirs
   - 4 : Nicolas cherche à voir le nombre de succès qu'il lui reste à débloqué, il va donc choisir d'aller sur la page succès afin de les voirs
-  - 5 : Thomas cherche à jouer à jouer à 2048, il clique sur la page du jeu, il conculte les règles afin d'être sur de comprendre le jeu, une fois qu'il a bien compris les règles, il clique sur le bouton jouer au dessus de la grille, il déplace les tuiles, finit sa partie et effectu un score qui s'affiche.
+  - 5 : Thomas cherche à jouer à 2048, il clique sur la page du jeu, il conculte les règles afin d'être sur de comprendre le jeu, une fois qu'il a bien compris les règles, il clique sur le bouton jouer au dessus de la grille, il déplace les tuiles, finit sa partie et effectu un score qui s'affiche.
   - 6 : Lena cherche à jouer à Astéroïde, elle clique sur la page du jeu, sélectionne le mode de jeu solo et lance une partie. 
   - 7 : Enzo et Thomas cherche à savoir qui est le meilleur sur le jeu Astéroïde, ils lancent donc une partie en mode duel, afin de s'affronter.
