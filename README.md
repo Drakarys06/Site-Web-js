@@ -22,7 +22,7 @@ Astéroïde :
 
 Persona : 
 
-Lena ElBlonde : âge 16 ans, au lycée, 
+Lena ElBlondo : âge 12 ans, au lycée, 
  - Cherche à voir une progression dans ses scores
  - Veut jouer à des jeux simples et rapide 
  
@@ -31,10 +31,10 @@ Enzo Uncryzer : 20 ans, chômage,
  - Ne veux pas rencontrer de bug 
 
 
-Nicolas ELCEO: 20 ans, étudiant en informatique 
+Nicolas ELCEO: 40 ans, travailleur 
  - Cherche à faire tous les succès et débloquer tout 
  - Pas de latence dans entre le click et l'action
 
 Thomas LeChill : 21 ans, travailleur, 
  - Cherche à jouer de manière occasionnel et de manière tranquille
- - Lance des parties rapidement
+ - Pouvoir lancer des parties rapidement
