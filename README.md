@@ -49,3 +49,10 @@ Thomas LeChill : 21 ans, travailleur,
   - 5 : Thomas cherche à jouer à 2048, il clique sur la page du jeu, il conculte les règles afin d'être sur de comprendre le jeu, une fois qu'il a bien compris les règles, il clique sur le bouton jouer au dessus de la grille, il déplace les tuiles, finit sa partie et effectu un score qui s'affiche.
   - 6 : Lena cherche à jouer à Astéroïde, elle clique sur la page du jeu, sélectionne le mode de jeu solo et lance une partie. 
   - 7 : Enzo et Thomas cherche à savoir qui est le meilleur sur le jeu Astéroïde, ils lancent donc une partie en mode duel, afin de s'affronter.
+  
+  
+  Modèle de tâche : 
+  https://www.mindmeister.com/map/2560780069
+  
+  Maquette : 
+  https://www.figma.com/proto/YTRgS3jYOJMmbSLXmcPQF9/Play-2-Games?node-id=5%3A26&scaling=scale-down&page-id=0%3A1&starting-point-node-id=5%3A26
