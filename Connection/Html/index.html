@@ -11,18 +11,19 @@
 
 <body>
     <nav>
-        <div class="container">
-            <div class="navbar">
-                <ul>
-                    <li data-tab-target="#home"><a href="#">Home</a></li>
-                    <li data-tab-target="#about"><a href="#">2048</a></li>
-                    <li data-tab-target="#contact"><a href="#">Astéroide</a></li>
-                    <li data-tab-target="#diplome"><a href="#">Classement</a></li>
+        <ul>
+            <li data-tab-target="#home"><a href="#">Home</a></li>
+            <li data-tab-target="#about" class="deroulant"><a href="#">Jeux &ensp;</a>
+                <ul class="sous">
+                    <li><a href="#">Astéroïde</a></li>
+                    <li><a href="#">Rage</a></li>
+                    <li><a href="#">Game On Web</a></li>
                 </ul>
-            </div>
-        </div>
+            </li>
+            <li data-tab-target="#succes"><a href="#">Succès</a></li>
+            <li data-tab-target="#diplome"><a href="#">Classement</a></li>
+        </ul>
     </nav>
-
     <div class="tab-content">
         <div id="container" data-tab-content class="active">
             <form action="http://127.0.0.1:5500/Html/index.html">
