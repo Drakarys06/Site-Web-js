@@ -46,19 +46,24 @@ export default class Vaisseau {
         this.angle += this.vitesseRotation;
     }
 
-    avance(){
-        this.x += Math.cos(this.angle-Math.PI/2) * this.v;
-        this.y += Math.sin(this.angle-Math.PI/2) * this.v;
+    avance() {
+        this.x += Math.cos(this.angle - Math.PI / 2) * this.v;
+        this.y += Math.sin(this.angle - Math.PI / 2) * this.v;
     }
 
-    accelere(){
-        if(this.v < 5)
+    accelere(largeurZone, hauteurZone) {
+        if (this.x < 0)
+            this.x = largeurZone;
+        if (this.x > largeurZone)
+            this.x = 1;
+        if (this.v < 5)
             this.v += this.acceleration;
     }
-    deccelere(){
-        if(this.v != 0)
+
+    deccelere() {
+        if (this.v != 0)
             this.v -= this.acceleration;
-        if(this.v < 0)
+        if (this.v < 0)
             this.v = 0;
     }
 }
