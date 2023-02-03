@@ -128,3 +128,7 @@ nav > ul li:hover .sous{
     content: "▼";
     font-size: 12px;
 }
+
+canvas {
+    border:1px solid;
+}
