@@ -86,7 +86,7 @@ nav ul{
 
 nav ul li{
     float: left;
-    width: 25%;
+    width: 20%;
     text-align: center;
     position: relative;
 }
@@ -142,4 +142,8 @@ nav > ul li:hover .sous{
 .deroulant > a::after{
     content: "▼";
     font-size: 12px;
+}
+
+canvas {
+    border:1px solid;
 }
