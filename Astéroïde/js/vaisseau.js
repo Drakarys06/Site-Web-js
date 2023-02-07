@@ -1,3 +1,4 @@
+import Bullet from './bullet.js'
 export default class Vaisseau {
     constructor() {
         this.x = 0;
@@ -6,6 +7,8 @@ export default class Vaisseau {
         this.v = 0;
         this.vitesseRotation = 0.2;
         this.acceleration = 0.1;
+        this.bullets = [];
+        this.delayMinBetweenBullets = 300;
     }
 
     init(x, y, v) {
@@ -36,6 +39,19 @@ export default class Vaisseau {
 
         ctx.stroke();
         ctx.restore();
+
+        this.drawBullets(ctx);
+    }
+
+    drawBullets(ctx) {
+        for (let i = 0; i < this.bullets.length; i++) {
+            let b = this.bullets[i];
+            b.draw(ctx);
+            b.move();
+            if (b.x < 0 || b.y < 0 || b.x > 600 || b.y > 600)
+                this.removeBullet(b);
+            
+        }
     }
 
     tournerGauche() {
@@ -46,16 +62,37 @@ export default class Vaisseau {
         this.angle += this.vitesseRotation;
     }
 
-    avance() {
+    /* Rotation par angle c'est injouable et j'arrive pas a enlever l'inercie
+       tournerGauche() {
+        if (this.vitesseAngulaire > -0.1)
+            this.vitesseAngulaire -= this.vitesseRotation;
+    }
+
+    tournerDroite() {
+        if (this.vitesseAngulaire < 0.1)
+            this.vitesseAngulaire += this.vitesseRotation;
+    }
+
+    rotation() {
+        if (this.vitesseAngulaire < 0.3 && this.vitesseAngulaire > -0.3)
+            this.angle += this.vitesseAngulaire;
+    }
+    */
+
+    avance(largeurZone, hauteurZone) {
+        if (this.x < 0)
+            this.x = 600;
+        if (this.x > largeurZone)
+            this.x = 1;
+        if (this.y < 0)
+            this.y = 600;
+        if (this.y > hauteurZone)
+            this.y = 1;
         this.x += Math.cos(this.angle - Math.PI / 2) * this.v;
         this.y += Math.sin(this.angle - Math.PI / 2) * this.v;
     }
 
-    accelere(largeurZone, hauteurZone) {
-        if (this.x < 0)
-            this.x = largeurZone;
-        if (this.x > largeurZone)
-            this.x = 1;
+    accelere() {
         if (this.v < 5)
             this.v += this.acceleration;
     }
@@ -66,4 +103,29 @@ export default class Vaisseau {
         if (this.v < 0)
             this.v = 0;
     }
+
+    tirer(time) {
+        var tempEcoule = 0;
+
+        if (this.lastBulletTime !== undefined) {
+            tempEcoule = time - this.lastBulletTime;
+            //console.log("temps écoulé = " + tempEcoule);
+        }
+
+        if (
+            this.lastBulletTime === undefined ||
+            tempEcoule > this.delayMinBetweenBullets
+        ) {
+            this.bullets.push(new Bullet(this));
+            // on mémorise le dernier temps.
+            this.lastBulletTime = time;
+        }
+        
+    }
+    
+    removeBullet(bullet) {
+        let position = this.bullets.indexOf(bullet);
+        this.bullets.splice(position, 1);
+    }
+
 }
