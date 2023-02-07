@@ -19,14 +19,14 @@ function init() {
     definitEcouteurs();
 
     vaisseau = new Vaisseau();
-    asteroide[0] = new Asteroide();
+    //asteroide[0] = new Asteroide();
     asteroide1 = new Asteroide();
     asteroide2 = new Asteroide();
     asteroide3 = new Asteroide();
     vaisseau.x = 100;
     vaisseau.y = 100;
-    asteroide[0].x = 300;
-    asteroide[0].y = 300;
+    //asteroide[0].x = 300;
+    //asteroide[0].y = 300;
     asteroide1.x = 200;
     asteroide1.y = 200;
     asteroide2.x = 20;
@@ -44,9 +44,9 @@ function mainloop() {
     // 2 on dessine les objets
     vaisseau.draw(ctx);
     asteroide1.draw(ctx);
-    asteroide[0].draw(ctx);
-    //asteroide2.draw(ctx);
-    //asteroide3.draw(ctx);
+    //asteroide[0].draw(ctx);
+    asteroide2.draw(ctx);
+    asteroide3.draw(ctx);
     drawScore(ctx);
 
     // 3 on met à jour les objets
