@@ -54,6 +54,21 @@ export default class Vaisseau {
         }
     }
 
+    drawReacteur(ctx){
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.translate(-15, -15);
+
+        ctx.beginPath();
+        ctx.moveTo(10, 20);
+        ctx.lineTo(15, 30);
+        ctx.moveTo(15, 30);
+        ctx.lineTo(20, 20);
+        ctx.stroke();
+        ctx.restore();
+    }
+
     tournerGauche() {
         this.angle -= this.vitesseRotation;
     }

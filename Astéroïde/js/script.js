@@ -6,9 +6,11 @@ import Bullet from "./bullet.js";
 window.onload = init;
 let canvas, ctx;
 let vaisseau;
+let asteroide = [];
 let asteroide1;
 let asteroide2;
 let asteroide3;
+let score = 0;
 
 function init() {
     canvas = document.querySelector("#myCanvas");
@@ -17,11 +19,14 @@ function init() {
     definitEcouteurs();
 
     vaisseau = new Vaisseau();
+    asteroide[0] = new Asteroide();
     asteroide1 = new Asteroide();
     asteroide2 = new Asteroide();
     asteroide3 = new Asteroide();
     vaisseau.x = 100;
     vaisseau.y = 100;
+    asteroide[0].x = 300;
+    asteroide[0].y = 300;
     asteroide1.x = 200;
     asteroide1.y = 200;
     asteroide2.x = 20;
@@ -39,8 +44,10 @@ function mainloop() {
     // 2 on dessine les objets
     vaisseau.draw(ctx);
     asteroide1.draw(ctx);
-    asteroide2.draw(ctx);
-    asteroide3.draw(ctx);
+    asteroide[0].draw(ctx);
+    //asteroide2.draw(ctx);
+    //asteroide3.draw(ctx);
+    drawScore(ctx);
 
     // 3 on met à jour les objets
     if (inputStates.gauche) {
@@ -51,6 +58,7 @@ function mainloop() {
     }
     if (inputStates.haut) {
         vaisseau.accelere();
+        vaisseau.drawReacteur(ctx);
     } else {
         vaisseau.deccelere();
     }
@@ -76,18 +84,21 @@ function detectionBulletsAsteroide() {
         var distance1 = Math.sqrt(dxba1 * dxba1 + dyba1 * dyba1);
         if (distance1 < 40 + 10) {
             asteroide1 = new Asteroide();
+            score++;
         }
         var dxba2 = vaisseau.bullets[i].x - asteroide2.x;
         var dyba2 = vaisseau.bullets[i].y - asteroide2.y;
         var distance2 = Math.sqrt(dxba2 * dxba2 + dyba2 * dyba2);
         if (distance2 < 40 + 10) {
             asteroide2 = new Asteroide();
+            score++;
         }
         var dxba3 = vaisseau.bullets[i].x - asteroide3.x;
         var dyba3 = vaisseau.bullets[i].y - asteroide3.y;
         var distance3 = Math.sqrt(dxba3 * dxba3 + dyba3 * dyba3);
         if (distance3 < 40 + 10) {
             asteroide3 = new Asteroide();
+            score++;
         }
     }
 }
@@ -115,7 +126,13 @@ function detectionVaisseauAsteroide() {
 }
 
 function finDePartie(ctx) {
-    //On efface le canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillText('Vous avez perdu', 10, 50);
+    alert("GAME OVER");
+    document.location.reload();
+    clearInterval(interval);
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "FFFFFF";
+    ctx.fillText("Score: "+score, 8, 20);
 }
