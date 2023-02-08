@@ -45,11 +45,11 @@ export default class Asteroide {
 
     deplacement(largeurZone, hauteurZone) {
         if (this.x < 0)
-            this.x = 600;
+            this.x = 800;
         if (this.x > largeurZone)
             this.x = 1;
         if (this.y < 0)
-            this.y = 600;
+            this.y = 800;
         if (this.y > hauteurZone)
             this.y = 1;
         this.x += Math.cos(this.angle - Math.PI / 2) * this.v;
