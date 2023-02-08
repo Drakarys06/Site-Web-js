@@ -2,37 +2,43 @@ import Vaisseau from "./vaisseau.js";
 import Asteroide from "./asteroide.js";
 import { inputStates, definitEcouteurs } from "./ecouteurs.js";
 import Bullet from "./bullet.js";
+import PetitAsteroide from "./petitAsteroide.js";
 
 window.onload = init;
 let canvas, ctx;
 let vaisseau;
 let asteroide = [];
-let asteroide1;
-let asteroide2;
-let asteroide3;
 let score = 0;
+let petit = [];
+let audio = new Audio("https://www.youtube.com/watch?v=WdFxHb9wpW8");
 
 function init() {
-    canvas = document.querySelector("#myCanvas");
+    canvas = document.querySelector("#myCanvasAst");
     ctx = canvas.getContext("2d");
 
     definitEcouteurs();
 
     vaisseau = new Vaisseau();
-    //asteroide[0] = new Asteroide();
-    asteroide1 = new Asteroide();
-    asteroide2 = new Asteroide();
-    asteroide3 = new Asteroide();
-    vaisseau.x = 100;
-    vaisseau.y = 100;
-    //asteroide[0].x = 300;
-    //asteroide[0].y = 300;
-    asteroide1.x = 200;
-    asteroide1.y = 200;
-    asteroide2.x = 20;
-    asteroide2.y = 30;
-    asteroide3.x = 500;
-    asteroide3.y = 400;
+    vaisseau.x = 300;
+    vaisseau.y = 300;
+    asteroide[0] = new Asteroide();
+    asteroide[0].x = 500;
+    asteroide[0].y = 500;
+    asteroide[1] = new Asteroide();
+    asteroide[1].x = 100;
+    asteroide[1].y = 100;
+    asteroide[2] = new Asteroide();
+    asteroide[2].x = 500;
+    asteroide[2].y = 500;
+    petit[0] = new PetitAsteroide();
+    petit[0].x = 100;
+    petit[0].y = 100;
+    petit[1] = new PetitAsteroide();
+    petit[1].x = 100;
+    petit[1].y = 100;
+    petit[2] = new PetitAsteroide();
+    petit[2].x = 100;
+    petit[2].y = 100;
     // on démarre l'animation
     requestAnimationFrame(mainloop);
 }
@@ -42,11 +48,12 @@ function mainloop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // 2 on dessine les objets
+
     vaisseau.draw(ctx);
-    asteroide1.draw(ctx);
-    //asteroide[0].draw(ctx);
-    asteroide2.draw(ctx);
-    asteroide3.draw(ctx);
+    for (var i = 0; i < asteroide.length; i++)
+        asteroide[i].draw(ctx);
+    for (var i = 0; i < petit.length; i++)
+        petit[i].draw(ctx);
     drawScore(ctx);
 
     // 3 on met à jour les objets
@@ -64,14 +71,17 @@ function mainloop() {
     }
     if (inputStates.espace) {
         vaisseau.tirer(Date.now());
-        detectionBulletsAsteroide();
+        audio.play();
     }
     detectionVaisseauAsteroide();
+    detectionVaisseauPetitAsteroide();
+    detectionBulletsPetitAsteroide();
+    detectionBulletsAsteroide();
     vaisseau.avance(canvas.width, canvas.height);
-    asteroide1.deplacement(canvas.width, canvas.height);
-    asteroide2.deplacement(canvas.width, canvas.height);
-    asteroide3.deplacement(canvas.width, canvas.height);
-
+    for (var i = 0; i < petit.length; i++)
+        petit[i].deplacement(canvas.width, canvas.height);
+    for (var i = 0; i < asteroide.length; i++)
+        asteroide[i].deplacement(canvas.width, canvas.height);
     // 4 on appelle la fonction mainloop dans 16ms
     requestAnimationFrame(mainloop);
 }
@@ -79,49 +89,53 @@ function mainloop() {
 function detectionBulletsAsteroide() {
     //Detection bullets asteroide
     for (var i = 0; i < vaisseau.bullets.length; i++) {
-        var dxba1 = vaisseau.bullets[i].x - asteroide1.x;
-        var dyba1 = vaisseau.bullets[i].y - asteroide1.y;
-        var distance1 = Math.sqrt(dxba1 * dxba1 + dyba1 * dyba1);
-        if (distance1 < 40 + 10) {
-            asteroide1 = new Asteroide();
-            score++;
+        for (var j = 0; j < asteroide.length; j++) {
+            var dxba = vaisseau.bullets[i].x - asteroide[j].x;
+            var dyba = vaisseau.bullets[i].y - asteroide[j].y;
+            var distance = Math.sqrt(dxba * dxba + dyba * dyba);
+            if (distance < 40 + 5) {
+                asteroide[j] = new Asteroide();
+                score++;
+            }
         }
-        var dxba2 = vaisseau.bullets[i].x - asteroide2.x;
-        var dyba2 = vaisseau.bullets[i].y - asteroide2.y;
-        var distance2 = Math.sqrt(dxba2 * dxba2 + dyba2 * dyba2);
-        if (distance2 < 40 + 10) {
-            asteroide2 = new Asteroide();
-            score++;
+    }
+}
+
+function detectionBulletsPetitAsteroide() {
+    //Detection bullets asteroide
+    for (var i = 0; i < vaisseau.bullets.length; i++) {
+        for (var j = 0; j < petit.length; j++) {
+            var dxba = vaisseau.bullets[i].x - petit[j].x;
+            var dyba = vaisseau.bullets[i].y - petit[j].y;
+            var distance = Math.sqrt(dxba * dxba + dyba * dyba);
+            if (distance < 10 + 5) {
+                petit[j] = new PetitAsteroide();
+                score += 3;
+            }
         }
-        var dxba3 = vaisseau.bullets[i].x - asteroide3.x;
-        var dyba3 = vaisseau.bullets[i].y - asteroide3.y;
-        var distance3 = Math.sqrt(dxba3 * dxba3 + dyba3 * dyba3);
-        if (distance3 < 40 + 10) {
-            asteroide3 = new Asteroide();
-            score++;
+    }
+}
+function detectionVaisseauPetitAsteroide() {
+    //Detection vaisseau asteroide
+    for (var i = 0; i < petit.length; i++) {
+        var dxva = vaisseau.x - petit[i].x;
+        var dyva = vaisseau.y - petit[i].y;
+        var distance = Math.sqrt(dxva * dxva + dyva * dyva);
+        if (distance < 10 + 20) {
+            finDePartie(ctx);
         }
     }
 }
 
 function detectionVaisseauAsteroide() {
     //Detection vaisseau asteroide
-    var dxva1 = vaisseau.x - asteroide1.x;
-    var dyva1 = vaisseau.y - asteroide1.y;
-    var distance1 = Math.sqrt(dxva1 * dxva1 + dyva1 * dyva1);
-    if (distance1 < 40 + 25) {
-        finDePartie(ctx);
-    }
-    var dxva2 = vaisseau.x - asteroide2.x;
-    var dyva2 = vaisseau.y - asteroide2.y;
-    var distance2 = Math.sqrt(dxva2 * dxva2 + dyva2 * dyva2);
-    if (distance2 < 40 + 25) {
-        finDePartie(ctx);
-    }
-    var dxva3 = vaisseau.x - asteroide3.x;
-    var dyva3 = vaisseau.y - asteroide3.y;
-    var distance3 = Math.sqrt(dxva3 * dxva3 + dyva3 * dyva3);
-    if (distance3 < 40 + 25) {
-        finDePartie(ctx);
+    for (var i = 0; i < asteroide.length; i++) {
+        var dxva = vaisseau.x - asteroide[i].x;
+        var dyva = vaisseau.y - asteroide[i].y;
+        var distance = Math.sqrt(dxva * dxva + dyva * dyva);
+        if (distance < 40 + 20) {
+            finDePartie(ctx);
+        }
     }
 }
 
@@ -134,5 +148,5 @@ function finDePartie(ctx) {
 function drawScore() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "FFFFFF";
-    ctx.fillText("Score: "+score, 8, 20);
+    ctx.fillText("Score: " + score, 8, 20);
 }

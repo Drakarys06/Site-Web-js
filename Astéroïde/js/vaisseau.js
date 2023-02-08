@@ -5,10 +5,10 @@ export default class Vaisseau {
         this.y = 0;
         this.angle = 0;
         this.v = 0;
-        this.vitesseRotation = 0.2;
-        this.acceleration = 0.1;
+        this.vitesseRotation = 0.10;
+        this.acceleration = 0.05;
         this.bullets = [];
-        this.delayMinBetweenBullets = 300;
+        this.delayMinBetweenBullets = 250;
     }
 
     init(x, y, v) {
