@@ -17,6 +17,7 @@ export default class Asteroide {
         ctx.translate(this.x, this.y);
         ctx.translate(-50, -50);
         ctx.beginPath();
+        ctx.strokeStyle = "white";
         //On dessine un cercle
         //ctx.arc(50, 50, 40, 0, 2 * Math.PI);
 
@@ -49,7 +50,7 @@ export default class Asteroide {
         if (this.x > largeurZone)
             this.x = 1;
         if (this.y < 0)
-            this.y = 800;
+            this.y = 600;
         if (this.y > hauteurZone)
             this.y = 1;
         this.x += Math.cos(this.angle - Math.PI / 2) * this.v;

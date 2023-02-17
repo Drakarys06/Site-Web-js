@@ -7,6 +7,7 @@ export default class Bullet {
 
     draw(ctx) {
         ctx.save();
+        ctx.fillStyle = "white";
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle);
         ctx.fillRect(0, 0, 5, 2);

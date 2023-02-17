@@ -7,22 +7,27 @@
 body {
     background: #6F7780;
 }
+
 h1 {
     font-family: 'Crete Round', serif;
     font-size: 45px;
     color: #444;
 }
+
 .red {
     color: #f00;
 }
+
 /* HEADER */
 
 header {
     height: 100px;
 }
-header h1{
+
+header h1 {
     float: left;
 }
+
 #container {
     width: 400px;
     margin: 0 auto;
@@ -80,24 +85,24 @@ nav {
     top: 0px;
 }
 
-nav ul{
+nav ul {
     list-style-type: none;
 }
 
-nav ul li{
+nav ul li {
     float: left;
     width: 20%;
     text-align: center;
     position: relative;
 }
 
-nav ul::after{
+nav ul::after {
     content: "";
     display: table;
     clear: both;
 }
 
-nav a{
+nav a {
     display: block;
     text-decoration: none;
     color: #6F7780;
@@ -105,12 +110,12 @@ nav a{
     padding: 20px 0px;
 }
 
-nav a:hover{
+nav a:hover {
     color: orange;
     border-bottom: 2px solid gold;
 }
 
-.sous{
+.sous {
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: #C8D7E6;
@@ -119,27 +124,27 @@ nav a:hover{
     z-index: 1000;
 }
 
-nav > ul li:hover .sous{
+nav>ul li:hover .sous {
     display: block;
 }
 
-.sous li{
+.sous li {
     float: none;
     width: 100%;
     text-align: left;
 }
 
-.sous a{
+.sous a {
     padding: 10px;
     border-bottom: none;
 }
 
-.sous a:hover{
+.sous a:hover {
     border-bottom: none;
     background-color: aqua;
 }
 
-.deroulant > a::after{
+.deroulant>a::after {
     content: "▼";
     font-size: 12px;
 }
@@ -150,5 +155,6 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    border:1px solid;
+    border: 1px solid;
+    background-color: black;
 }

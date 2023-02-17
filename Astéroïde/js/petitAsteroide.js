@@ -16,6 +16,8 @@ export default class PetitAsteroide {
         ctx.translate(this.x, this.y);
         ctx.translate(-23, -40);
         ctx.beginPath();
+        ctx.strokeStyle = "white";
+
         //On dessine un cercle
         //ctx.arc(23, 40, 15, 0, 2 * Math.PI);
 
@@ -41,7 +43,7 @@ export default class PetitAsteroide {
 
     deplacement(largeurZone, hauteurZone) {
         if (this.x < 0)
-            this.x = 600;
+            this.x = 800;
         if (this.x > largeurZone)
             this.x = 1;
         if (this.y < 0)
