@@ -28,6 +28,7 @@ export default class Vaisseau {
 
         // on dessine un triangle pour le vaisseau
         ctx.beginPath();
+        ctx.strokeStyle = "white";
         // 1er trait à gauche
         ctx.moveTo(0, 30);
         ctx.lineTo(15, 0);
@@ -48,7 +49,7 @@ export default class Vaisseau {
             let b = this.bullets[i];
             b.draw(ctx);
             b.move();
-            if (b.x < 0 || b.y < 0 || b.x > 600 || b.y > 600)
+            if (b.x < 0 || b.y < 0 || b.x > 800 || b.y > 600)
                 this.removeBullet(b);
             
         }
@@ -61,6 +62,7 @@ export default class Vaisseau {
         ctx.translate(-15, -15);
 
         ctx.beginPath();
+        ctx.strokeStyle = "white";
         ctx.moveTo(10, 20);
         ctx.lineTo(15, 30);
         ctx.moveTo(15, 30);
@@ -100,7 +102,7 @@ export default class Vaisseau {
         if (this.x > largeurZone)
             this.x = 1;
         if (this.y < 0)
-            this.y = 800;
+            this.y = 600;
         if (this.y > hauteurZone)
             this.y = 1;
         this.x += Math.cos(this.angle - Math.PI / 2) * this.v;

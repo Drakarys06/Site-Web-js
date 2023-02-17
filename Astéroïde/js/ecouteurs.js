@@ -1,9 +1,20 @@
-let inputStates = {};
+import rejouer from "./script.js";
 
+let inputStates = {};
 
 function definitEcouteurs() {
     definirEcouteurClavier();
-    //definitEcouteursSouris();
+    definitEcouteursSouris();
+}
+
+function capteEvent(event){
+    if( event.preventDefault ){
+        event.preventDefault();
+        event.stopPropagation();
+    }else{
+        Event.returnValue = false;
+        Event.cancelBubble = true;
+    }
 }
 
 function definirEcouteurClavier() {
@@ -24,8 +35,11 @@ function definirEcouteurClavier() {
             case " ":
                 inputStates.espace = true;
                 break;
+            case "Enter":
+                rejouer();
+                break;
         }
-
+        capteEvent(event)
     }
     window.onkeyup = (event) => {
         switch (event.key) {
@@ -44,8 +58,19 @@ function definirEcouteurClavier() {
             case " ":
                 inputStates.espace = false;
                 break;
+            case "Enter":
+                inputStates.enter = false;
+                break;
         }
     }
 }
 
+function definitEcouteursSouris() {
+    window.onmousedown = (event) => {
+        inputStates.clicGauche = true;
+    }
+    window.onmouseup = (event) => {
+        inputStates.clicGauche = false;
+    }
+}
 export { definitEcouteurs, inputStates }
