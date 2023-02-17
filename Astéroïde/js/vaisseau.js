@@ -51,7 +51,7 @@ export default class Vaisseau {
             b.move();
             if (b.x < 0 || b.y < 0 || b.x > 800 || b.y > 600)
                 this.removeBullet(b);
-            
+
         }
     }
 
@@ -135,6 +135,8 @@ export default class Vaisseau {
         ) {
             this.bullets.push(new Bullet(this));
             // on mémorise le dernier temps.
+            var audio = document.getElementById("weaponAudio");
+            audio.play();
             this.lastBulletTime = time;
         }
         

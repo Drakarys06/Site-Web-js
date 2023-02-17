@@ -10,7 +10,6 @@ let vaisseau;
 let asteroide = [];
 let score = 0;
 let petit = [];
-let stop;
 
 function init() {
     canvas = document.querySelector("#myCanvasAst");
@@ -63,17 +62,24 @@ function mainloop() {
     if (inputStates.droite) {
         vaisseau.tournerDroite();
     }
+    var audioMotor = document.getElementById("motor");
     if (inputStates.haut) {
         vaisseau.accelere();
         vaisseau.drawReacteur(ctx);
+        audioMotor.play();
     } else {
         vaisseau.deccelere();
+        audioMotor.pause();
     }
     if (inputStates.espace) {
         vaisseau.tirer(Date.now());
     }
-    if (detectionVaisseauAsteroide() || detectionVaisseauPetitAsteroide())
+    if (detectionVaisseauAsteroide() || detectionVaisseauPetitAsteroide()) {
+        var audio = document.getElementById("gameOver");
+        audioMotor.pause();
+        audio.play();
         gameOver(ctx);
+    }
     else {
         detectionBulletsPetitAsteroide();
         detectionBulletsAsteroide();
@@ -95,6 +101,8 @@ function detectionBulletsAsteroide() {
             var dyba = vaisseau.bullets[i].y - asteroide[j].y;
             var distance = Math.sqrt(dxba * dxba + dyba * dyba);
             if (distance < 40 + 5) {
+                var audio = document.getElementById("Explosion");
+                audio.play();
                 asteroide[j] = new Asteroide();
                 score++;
             }
@@ -110,6 +118,8 @@ function detectionBulletsPetitAsteroide() {
             var dyba = vaisseau.bullets[i].y - petit[j].y;
             var distance = Math.sqrt(dxba * dxba + dyba * dyba);
             if (distance < 10 + 5) {
+                var audio = document.getElementById("Explosion");
+                audio.play();
                 petit[j] = new PetitAsteroide();
                 score += 3;
             }
@@ -147,8 +157,8 @@ function drawScore() {
 }
 
 function gameOver(ctx) {
+
     ctx.save();
-    console.log("gameOver");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "30px Arial";
     ctx.fillStyle = "000000";
@@ -167,7 +177,7 @@ export default function rejouer() {
     restorer();
 }
 
-function restorer(){
+function restorer() {
     vaisseau = new Vaisseau();
     vaisseau.x = 300;
     vaisseau.y = 300;
@@ -189,6 +199,7 @@ function restorer(){
     petit[2] = new PetitAsteroide();
     petit[2].x = 100;
     petit[2].y = 100;
+    score = 0;
     // on démarre l'animation
     requestAnimationFrame(mainloop);
 }
