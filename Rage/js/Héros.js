@@ -15,7 +15,7 @@ class Sprite {
     }
     update() {
         this.draw()
-        this.position.y += 10
+        this.position.y += this.velocity.y
     }
 }
 const player = new Sprite({
@@ -25,7 +25,7 @@ const player = new Sprite({
     },
     velocity : {
         x : 0,
-        y : 0,
+        y : 1,
     }
 })
 
@@ -36,7 +36,7 @@ const enemy = new Sprite({
      },
      velocity : {
          x : 0,
-         y : 0,
+         y : 1,
      }
  })
 
@@ -46,6 +46,7 @@ console.log(player)
 function animate() {
     window.requestAnimationFrame(animate)
     console.log('go');
+    c.clearRect(0,0, canvas.width, canvas.height)
     player.update();
     enemy.update();
 }
