@@ -15,18 +15,20 @@ class Sprite {
         this.hitBox = {
             position : this.position ,
             width : 100,
-            height : 50
+            height : 150
         }
         this.color =color
+        this.isHitting
     }
     draw() {
         c.fillStyle = this.color
         c.fillRect(this.position.x,this.position.y,50,this.height) 
     
         //Création du rectangle de la HitBox
+        if (this.isHitting){
         c.fillStyle = 'white'
         c.fillRect(this.hitBox.position.x, this.hitBox.position.y, this.hitBox.width,this.hitBox.height)
-    }
+    }}
     update() {
         this.draw()
         this.position.x += this.velocity.x
@@ -35,7 +37,13 @@ class Sprite {
         if (this.position.y + this.height + this.velocity.y >= canvas.height){
             this.velocity.y = 0;
         }else this.velocity.y += gravity
+    }
 
+    attack() {
+        this.isHitting = true
+        setTimeout(() => {
+            this.isHitting = false
+        }, 100)
     }
 }
 const player = new Sprite({
@@ -94,8 +102,12 @@ function animate() {
     }
 
     // Détéction de collision
-    if (player.hitBox.position.x + player.hitBox.width >= enemy.position.x && player.hitBox.position.x <= enemy.position.x + enemy.width)
-    {console.log('hit');
+    if (player.hitBox.position.x + player.hitBox.width >= enemy.position.x && player.hitBox.position.x <= enemy.position.x + enemy.width//hitbox lateral
+        && player.hitBox.position.y + player.hitBox.height >= enemy.position.y && player.hitBox.position.y <=  enemy.position.y + enemy.height //hitbox vertical
+        && player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+        )
+    {player.isHitting =false //Une seule attaque sera reconnue par le boutton d'attack pressé
+    console.log('hit');
     }
 }
 
@@ -113,6 +125,9 @@ animate()
             break;
         case 'z' :
             player.velocity.y = -20
+            break
+        case ' ':
+            player.attack()
             break
     }
     console.log(event.key)
