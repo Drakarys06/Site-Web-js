@@ -1,19 +1,31 @@
 
 const canvas = document.getElementById('myCanvas');
 const c = canvas.getContext("2d");
-const gravity = 0.098;
+const gravity = 0.98;
 
 c.fillRect(0,0,canvas.width, canvas.height)
 
 class Sprite {
-    constructor({position, velocity}) {
+    constructor({position, velocity,color = 'blue'}) {
         this.position = position
         this.velocity = velocity
         this.height = 150
+        this.width = 50
+        this.lastKey
+        this.hitBox = {
+            position : this.position ,
+            width : 100,
+            height : 50
+        }
+        this.color =color
     }
     draw() {
-        c.fillStyle = 'red'
-       c.fillRect(this.position.x,this.position.y,50,this.height) 
+        c.fillStyle = this.color
+        c.fillRect(this.position.x,this.position.y,50,this.height) 
+    
+        //Création du rectangle de la HitBox
+        c.fillStyle = 'white'
+        c.fillRect(this.hitBox.position.x, this.hitBox.position.y, this.hitBox.width,this.hitBox.height)
     }
     update() {
         this.draw()
@@ -45,7 +57,8 @@ const enemy = new Sprite({
      velocity : {
          x : 0,
          y : 0,
-     }
+     },
+    color : 'green',
  })
 
 
@@ -57,8 +70,12 @@ const keys = {
     },
     d : {
         pressed : false
+    },
+    z : {
+        pressed: false
     }
 }
+let lastKey
 
 function animate() {
     window.requestAnimationFrame(animate)
@@ -66,10 +83,19 @@ function animate() {
     player.update();
     enemy.update();
 
-    if (keys.q.pressed) {
-        player.velocity.x = -1
-    } else if (keys.d.pressed){
-        player.velocity.x = 1
+    //vitesse du joueur inactif
+    player.velocity.x = 0
+
+    // Mouvement du Joueur
+    if (keys.q.pressed && player.lastKey === 'q') {
+        player.velocity.x = -10
+    } else if (keys.d.pressed && player.lastKey === 'd'){
+        player.velocity.x = 10
+    }
+
+    // Détéction de collision
+    if (player.hitBox.position.x + player.hitBox.width >= enemy.position.x && player.hitBox.position.x <= enemy.position.x + enemy.width)
+    {console.log('hit');
     }
 }
 
@@ -79,10 +105,15 @@ animate()
     switch (event.key) {
         case 'd' :
             keys.d.pressed = true
+            player.lastKey = 'd'
             break;
         case 'q' :
             keys.q.pressed = true
+            player.lastKey = 'q'
             break;
+        case 'z' :
+            player.velocity.y = -20
+            break
     }
     console.log(event.key)
  })
@@ -95,5 +126,8 @@ animate()
         case 'q' :
             keys.q.pressed = false
             break;
+        case 'z' :
+            keys.z.pressed = false
+            break
     }
  })
