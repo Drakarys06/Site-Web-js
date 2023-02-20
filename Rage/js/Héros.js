@@ -1,11 +1,10 @@
-
 const canvas = document.getElementById('myCanvas');
 const c = canvas.getContext("2d");
 const gravity = 0.98;
 
 c.fillRect(0,0,canvas.width, canvas.height)
 
-class Sprite {
+class Character {
     constructor({position, velocity,color = 'blue'}) {
         this.position = position
         this.velocity = velocity
@@ -34,7 +33,7 @@ class Sprite {
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
 
-        if (this.position.y + this.height + this.velocity.y >= canvas.height){
+        if (this.position.y + this.height + this.velocity.y >= canvas.height-50){
             this.velocity.y = 0;
         }else this.velocity.y += gravity
     }
@@ -46,7 +45,38 @@ class Sprite {
         }, 100)
     }
 }
-const player = new Sprite({
+class Sprite {
+    constructor({position, imageSrc, scale =1}) {
+        this.position = position
+        this.height = 150
+        this.width = 50
+        this.image = new Image()
+        this.image.src = imageSrc
+        this.scale = scale
+    }
+    draw() {
+        c.drawImage(this.image, this.position.x, this.position.y,this.image.width* this.scale,this.image.height* this.scale)
+     }
+    update() {
+        this.draw()
+        
+}}
+const background = new Sprite({
+    position : {
+        x:0,
+        y:0
+    },
+    imageSrc: './assets/Final/background_0.png',
+    scale: 2.6
+})
+const ground = new Sprite({
+    position : {
+        x:0,
+        y:0
+    },
+    imageSrc: './assets/PlateformeCastle/ground.png'
+})
+const player = new Character({
    position : {
     x : 0,
     y : 0,
@@ -57,7 +87,9 @@ const player = new Sprite({
     }
 })
 
-const enemy = new Sprite({
+
+
+const enemy = new Character({
     position : {
      x : 400,
      y : 100,
@@ -83,11 +115,15 @@ const keys = {
         pressed: false
     }
 }
+
+
 let lastKey
 
 function animate() {
     window.requestAnimationFrame(animate)
     c.clearRect(0,0, canvas.width, canvas.height)
+    background.update()
+    ground.update();
     player.update();
     enemy.update();
 
