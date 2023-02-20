@@ -6,10 +6,10 @@ c.fillRect(0,0,canvas.width, canvas.height)
 const background = new Sprite({
     position : {
         x:0,
-        y:0
+        y:-100
     },
     imageSrc: './assets/Final/background_0.png',
-    scale: 2.6
+    scale: 2.4
 })
 const light = new Sprite({
     position : {
@@ -19,6 +19,86 @@ const light = new Sprite({
     imageSrc: './assets/PlateformeCastle/anim_light2.png',
     scale: 2,
     framesMax : 4,
+})
+const background2 = new Sprite({
+    position : {
+        x:0,
+        y:-120
+    },
+    imageSrc: './assets/Final/background_1.png',
+    scale:2.25
+})
+const wall = new Sprite({
+    position : {
+        x:0,
+        y:300
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground5.png',
+    scale:2.5
+})
+const wall2 = new Sprite({
+    position : {
+        x:390,
+        y:300
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground5.png',
+    scale:2.5
+})
+const wall3 = new Sprite({
+    position : {
+        x:680,
+        y:300
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground5.png',
+    scale:2.5
+})
+const wall4 = new Sprite({
+    position : {
+        x:1040,
+        y:300
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground5.png',
+    scale:2.5
+})
+const planche1 = new Sprite({
+    position : {
+        x:0,
+        y:600
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground1.png',
+    scale:1.3
+})
+const planche2 = new Sprite({
+    position : {
+        x:390,
+        y:600
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground1.png',
+    scale:1.3
+})
+const planche3 = new Sprite({
+    position : {
+        x:680,
+        y:600
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground1.png',
+    scale:1.3
+})
+const planche4 = new Sprite({
+    position : {
+        x:1070,
+        y:600
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground1.png',
+    scale:1.3
+})
+const planche5 = new Sprite({
+    position : {
+        x:1460,
+        y:600
+    },
+    imageSrc: './assets/Pixel2DCastle1.2/Pixel2DCastle3/ground1.png',
+    scale:1.3
 })
 const player = new Character ({
    position : {
@@ -100,6 +180,19 @@ function animate() {
     window.requestAnimationFrame(animate)
     c.clearRect(0,0, canvas.width, canvas.height)
     background.update()
+    background2.update()
+    wall2.update()
+    wall.update()
+    wall3.update()
+    wall4.update()
+    planche1.update()
+    planche2.update()
+    planche3.update()
+    planche4.update()
+    planche5.update()
+
+
+
     light.update();
     player.update();
     enemy.update();

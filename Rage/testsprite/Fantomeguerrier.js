@@ -1,4 +1,4 @@
-var SPRITESHEET_URL = "./assets/Fantômeguerrier/Idle.png";
+var SPRITESHEET_URL = "./assets/Final/Tiles.png";
 var SPRITE_WIDTH = 130;
 var SPRITE_HEIGHT = 150;
 var NB_POSTURES=8;
