@@ -20,6 +20,42 @@ const light = new Sprite({
     scale: 2,
     framesMax : 4,
 })
+const light2 = new Sprite({
+    position : {
+        x:390,
+        y:800
+    },
+    imageSrc: './assets/PlateformeCastle/anim_light2.png',
+    scale: 2,
+    framesMax : 4,
+})
+const light3 = new Sprite({
+    position : {
+        x:710,
+        y:800
+    },
+    imageSrc: './assets/PlateformeCastle/anim_light2.png',
+    scale: 2,
+    framesMax : 4,
+})
+const light4 = new Sprite({
+    position : {
+        x:1065,
+        y:800
+    },
+    imageSrc: './assets/PlateformeCastle/anim_light2.png',
+    scale: 2,
+    framesMax : 4,
+})
+const light5 = new Sprite({
+    position : {
+        x:1430,
+        y:800
+    },
+    imageSrc: './assets/PlateformeCastle/anim_light2.png',
+    scale: 2,
+    framesMax : 4,
+})
 const background2 = new Sprite({
     position : {
         x:0,
@@ -194,6 +230,10 @@ function animate() {
 
 
     light.update();
+    light2.update();
+    light3.update();
+    light4.update();
+    light5.update();
     player.update();
     enemy.update();
 
