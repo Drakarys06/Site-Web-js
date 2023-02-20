@@ -4,12 +4,34 @@ import { inputStates, definitEcouteurs } from "./ecouteurs.js";
 import Bullet from "./bullet.js";
 import PetitAsteroide from "./petitAsteroide.js";
 
-window.onload = init;
+window.onload = menu;
 let canvas, ctx;
 let vaisseau;
 let asteroide = [];
 let score = 0;
 let petit = [];
+
+function menu(){
+    canvas = document.querySelector("#myCanvasAst");
+    ctx = canvas.getContext("2d");
+    definitEcouteurs();
+    ctx.save();
+    ctx.fillStyle = "white";
+    ctx.font = "bold 30px Arial";
+    ctx.fillText("ASTEROIDE", 250, 100);
+    ctx.font = "bold 20px Arial";
+    ctx.fillText("Appuyer sur la touche Entrer pour commencer", 200, 200);
+    ctx.fillText("Le but du jeu est de détruire tous les astéroides", 200, 250);
+    ctx.fillText("COMMANDE : ", 100, 350);
+    ctx.fillText("Flèche gauche : tourner à gauche ", 100, 400);
+    ctx.fillText("Flèche droite : tourner à droite ", 100, 450);
+    ctx.fillText("Flèche haut :  accélérer  ", 100, 500);
+    ctx.fillText("Espace :  tirer  ", 100, 550);
+    ctx.restore();
+    if(inputStates.enter){
+        init();
+    }
+}
 
 function init() {
     canvas = document.querySelector("#myCanvasAst");
