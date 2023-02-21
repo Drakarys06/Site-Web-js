@@ -59,10 +59,16 @@ class Character extends Sprite {
             this.isHitting = false
         }, 100)
     }
+    takeHit(){
+        this.switchSprite('Take_Hit')
+
+    }
 
     switchSprite (sprite) {
-        if (this.image == this.spritesdiffs.Attack.image && this.frama<this.spritesdiffs.Attack.framesMax-1 ) 
+        if (this.image === this.spritesdiffs.Attack.image && this.frama<this.spritesdiffs.Attack.framesMax-1 ) 
     return 
+    if(this.image ===this.spritesdiffs.Take_Hit.image && this.frama<this.spritesdiffs.Take_Hit.framesMax-1)
+    return
         switch (sprite) {
             case 'Idle':
                 if (this.image != this.spritesdiffs.Idle.image){
@@ -100,5 +106,6 @@ class Character extends Sprite {
                     this.framesMax = this.spritesdiffs.Walk.framesMax
                     this.frama =0}
                 break
+            
 }}
 }

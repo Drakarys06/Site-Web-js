@@ -190,7 +190,29 @@ const enemy = new Character({
      },
      imageSrc: './assets/Trashmob1/Idle.png',
      framesMax:4,
-     scale:1.5
+     scale:1.5,
+     spritesdiffs: {
+        Idle:{
+            imageSrc:'./assets/Trashmob1/Idle.png',
+            framesMax:4,
+        },
+        Attack:{
+            imageSrc:'./assets/Trashmob1/Attack.png',
+            framesMax:8,
+        },
+        Walk:{
+            imageSrc:'./assets/Trashmob1/Walk.png',
+            framesMax:4,
+        },
+        Death:{
+            imageSrc:'./assets/Fantômeguerrier/Death.png',
+            framesMax:7,
+        },
+        Take_Hit:{
+            imageSrc:'./assets/Trashmob1/Take Hit.png',
+            framesMax:4,
+        },
+    }
 
  })
 
@@ -251,14 +273,20 @@ function animate() {
         player.switchSprite('Idle')
     }
 
+    // Mouvement du bot
+    enemy.switchSprite('Idle')
+
     // Détéction de collision
     if (player.hitBox.position.x + player.hitBox.width >= enemy.position.x && player.hitBox.position.x <= enemy.position.x + enemy.width//hitbox lateral
         && player.hitBox.position.y + player.hitBox.height >= enemy.position.y && player.hitBox.position.y <=  enemy.position.y + enemy.height //hitbox vertical
         && player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
         )
     {
-    player.isHitting =false //Une seule attaque sera reconnue par le boutton d'attack pressé
+    player.isHitting = false
     console.log('hit');
+    enemy.velocity.x=0
+    enemy.takeHit()
+    //Une seule attaque sera reconnue par le boutton d'attack pressé
     }
 }
 
