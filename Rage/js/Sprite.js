@@ -9,7 +9,7 @@ class Sprite {
         this.framesMax = framesMax
         this.frama =0
         this.framevelocity =0
-        this.frametime = 8
+        this.frametime = 10
     }
     draw() {
         c.drawImage(

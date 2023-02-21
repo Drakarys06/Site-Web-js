@@ -215,6 +215,59 @@ const enemy = new Character({
     }
 
  })
+ const enemy2 = new Character({
+    position : {
+     x : 600,
+     y : 100,
+     },
+     velocity : {
+         x : 0,
+         y : 0,
+     },
+     imageSrc: './assets/Trashmob1/Idle.png',
+     framesMax:4,
+     scale:1.5,
+     spritesdiffs: {
+        Idle:{
+            imageSrc:'./assets/Trashmob1/Idle.png',
+            framesMax:4,
+        },
+        Attack:{
+            imageSrc:'./assets/Trashmob1/Attack.png',
+            framesMax:8,
+        },
+        Walk:{
+            imageSrc:'./assets/Trashmob1/Walk.png',
+            framesMax:4,
+        },
+        Death:{
+            imageSrc:'./assets/Fantômeguerrier/Death.png',
+            framesMax:7,
+        },
+        Take_Hit:{
+            imageSrc:'./assets/Trashmob1/Take Hit.png',
+            framesMax:4,
+        },
+    }
+
+ })
+
+ const enemy3 = new Sprite({
+    position : {
+     x : 500,
+     y : 0,
+     },
+     velocity : {
+         x : 0,
+         y : 0,
+     },
+     imageSrc: './assets/png/Idle4.png',
+     framesMax:4,
+     scale:2,
+     
+    }
+
+ )
 
 
 console.log(player)
@@ -258,9 +311,22 @@ function animate() {
     light5.update();
     player.update();
     enemy.update();
+    enemy2.update();
+    enemy3.update();
 
     //vitesse du joueur inactif
     player.velocity.x = 0
+
+    //vitesse des monstres
+    enemy.velocity.x=-0
+    enemy2.velocity.x=-0
+
+    if(enemy.velocity.x !=0){
+    enemy.switchSprite('Walk')
+    enemy2.switchSprite('Walk')
+    } else
+    enemy.switchSprite('Idle')
+    enemy2.switchSprite('Idle')
 
     // Mouvement du Joueur
     if (keys.q.pressed && player.lastKey === 'q') {
@@ -273,9 +339,7 @@ function animate() {
         player.switchSprite('Idle')
     }
 
-    // Mouvement du bot
-    enemy.switchSprite('Idle')
-
+ 
     // Détéction de collision
     if (player.hitBox.position.x + player.hitBox.width >= enemy.position.x && player.hitBox.position.x <= enemy.position.x + enemy.width//hitbox lateral
         && player.hitBox.position.y + player.hitBox.height >= enemy.position.y && player.hitBox.position.y <=  enemy.position.y + enemy.height //hitbox vertical
