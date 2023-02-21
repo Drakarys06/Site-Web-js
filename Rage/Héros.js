@@ -318,16 +318,16 @@ function animate() {
     player.velocity.x = 0
 
     //vitesse des monstres
-    enemy.velocity.x=-0
-    enemy2.velocity.x=-0
+    enemy.velocity.x=0
+    enemy2.velocity.x=0
 
     if(enemy.velocity.x !=0){
     enemy.switchSprite('Walk')
     enemy2.switchSprite('Walk')
-    } else
+    } else {
     enemy.switchSprite('Idle')
     enemy2.switchSprite('Idle')
-
+    }
     // Mouvement du Joueur
     if (keys.q.pressed && player.lastKey === 'q') {
         player.velocity.x = -5
@@ -352,6 +352,17 @@ function animate() {
     enemy.takeHit()
     //Une seule attaque sera reconnue par le boutton d'attack pressé
     }
+    if (player.hitBox.position.x + player.hitBox.width >= enemy2.position.x && player.hitBox.position.x <= enemy2.position.x + enemy2.width//hitbox lateral
+    && player.hitBox.position.y + player.hitBox.height >= enemy2.position.y && player.hitBox.position.y <=  enemy2.position.y + enemy2.height //hitbox vertical
+    && player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+    )
+{
+player.isHitting = false
+console.log('hit');
+enemy2.velocity.x=0
+enemy2.takeHit()
+//Une seule attaque sera reconnue par le boutton d'attack pressé
+}
 }
 
 animate()
