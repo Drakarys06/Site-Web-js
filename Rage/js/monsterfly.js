@@ -39,5 +39,62 @@ class Monsterfly extends Sprite {
             this.position.y += this.velocity.y
     
         }
-
+        attack() {
+            this.switchSprite('Attack')
+            this.isHitting = true
+            setTimeout(() => {
+                this.isHitting = false
+            }, 100)
+        }
+        takeHit(){
+            this.switchSprite('Take_Hit')
+    
+        }
+    
+        switchSprite (sprite) {
+            if (this.image === this.spritesdiffs.Attack.image && this.frama<this.spritesdiffs.Attack.framesMax-1 ) 
+        return 
+        if(this.image ===this.spritesdiffs.Take_Hit.image && this.frama<this.spritesdiffs.Take_Hit.framesMax-1)
+        return
+            switch (sprite) {
+                case 'Idle':
+                    if (this.image != this.spritesdiffs.Idle.image){
+                        this.image = this.spritesdiffs.Idle.image
+                        this.framesMax = this.spritesdiffs.Idle.framesMax
+                        this.frama =0}
+                    break;
+                case 'Run':
+                    if(this.image != this.spritesdiffs.Run.image){
+                        this.image = this.spritesdiffs.Run.image
+                        this.framesMax = this.spritesdiffs.Run.framesMax
+                        this.frama =0}
+                        break;
+                case 'Attack':
+                    if (this.image != this.spritesdiffs.Attack.image){
+                    this.image = this.spritesdiffs.Attack.image
+                    this.framesMax = this.spritesdiffs.Attack.framesMax
+                    this.frama =0}
+                        break
+                case 'Death':
+                    if (this.image != this.spritesdiffs.Death.image){
+                        this.image = this.spritesdiffs.Death.image
+                        this.framesMax = this.spritesdiffs.Death.framesMax
+                        this.frama =0}
+                           break
+                case 'Take_Hit':
+                    if (this.image != this.spritesdiffs.Take_Hit.image){
+                        this.image = this.spritesdiffs.Take_Hit.image                            
+                        this.framesMax = this.spritesdiffs.Take_Hit.framesMax
+                        this.frama =0}
+                            break
+                case 'Walk':
+                    if (this.image != this.spritesdiffs.Walk.image){
+                        this.image = this.spritesdiffs.Walk.image                            
+                        this.framesMax = this.spritesdiffs.Walk.framesMax
+                        this.frama =0}
+                    break
+                
+    }
+} 
 }
+

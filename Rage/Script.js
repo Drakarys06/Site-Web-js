@@ -264,12 +264,105 @@ const enemy = new Character({
      imageSrc: './assets/png/Idle4.png',
      framesMax:4,
      scale:2,
-     
+    })
+
+ const fly = new Monsterfly({
+    position : {
+        x : 500,
+        y : 400,
+    },
+    velocity : {
+        x : 0,
+        y:0,
+    },
+    imageSrc: './assets/Trashmob4/Flight.png',
+    framesMax:8,
+    scale:2,
+    spritesdiffs: {
+        Idle:{
+            imageSrc: './assets/Trashmob4/Flight.png',
+            framesMax:8
+        },
+        Take_Hit: {
+            imageSrc:'./assets/Trashmob4/Take Hit.png',
+        framesMax:4,
+     },
+     Attack: {
+         imageSrc: './assets/Trashmob4/Attack.png',
+         framesMax:8,
+     },
+     Death: {
+         imageSrc: './assets/Trashmob4/Death.png',
+         framesMax:4,
+     }
     }
+    }
+)
+const fly2 = new Monsterfly({
+    position : {
+        x : 200,
+        y : 400,
+    },
+    velocity : {
+        x : 0,
+        y:0,
+    },
+    imageSrc: './assets/Trashmob4/Flight.png',
+    framesMax:8,
+    scale:2,
+    spritesdiffs: {
+        Idle:{
+            imageSrc: './assets/Trashmob4/Flight.png',
+            framesMax:8
+        },
+        Take_Hit: { 
+            imageSrc: './assets/Trashmob4/Take Hit.png',
+        framesMax:4,
+     },
+     Attack: {
+         imageSrc: './assets/Trashmob4/Attack.png',
+         framesMax:8,
+     },
+     Death: {
+         imageSrc: './assets/Trashmob4/Death.png',
+         framesMax:4,
+     }
+    }
+    }
+)
+const fly3 = new Monsterfly({
+    position : {
+        x : 800,
+        y : 400,
+    },
+    velocity : {
+        x : 0,
+        y:0,
+    },
+    imageSrc: './assets/Trashmob4/Flight.png',
+    framesMax:8,
+    scale:2,
+    spritesdiffs: {
+        Idle:{
+            imageSrc: './assets/Trashmob4/Flight.png',
+            framesMax:8
+        },
+        Take_Hit:{
+             imageSrc: './assets/Trashmob4/Take Hit.png',
+        framesMax:4,
+     },
+        Attack: {
+            imageSrc: './assets/Trashmob4/Attack.png',
+            framesMax:8,
+        },
+        Death: {
+            imageSrc: './assets/Trashmob4/Death.png',
+            framesMax:4,
+        }
 
- )
-
-
+    }
+    }
+)
 console.log(player)
 
 const keys = {
@@ -313,6 +406,9 @@ function animate() {
     enemy.update();
     enemy2.update();
     enemy3.update();
+    fly.update();
+    fly2.update();
+    fly3.update();
 
     //vitesse du joueur inactif
     player.velocity.x = 0
@@ -324,9 +420,15 @@ function animate() {
     if(enemy.velocity.x !=0){
     enemy.switchSprite('Walk')
     enemy2.switchSprite('Walk')
+    fly.switchSprite("Flight")
+    fly2.switchSprite("Flight")
+    fly3.switchSprite("Flight")
     } else {
     enemy.switchSprite('Idle')
     enemy2.switchSprite('Idle')
+    fly.switchSprite("Idle")
+    fly2.switchSprite("Idle")
+    fly3.switchSprite("Idle")
     }
     // Mouvement du Joueur
     if (keys.q.pressed && player.lastKey === 'q') {
@@ -363,8 +465,37 @@ enemy2.velocity.x=0
 enemy2.takeHit()
 //Une seule attaque sera reconnue par le boutton d'attack pressé
 }
+if (player.hitBox.position.x + player.hitBox.width >= fly.position.x && player.hitBox.position.x <= fly.position.x + fly.width//hitbox lateral
+&& player.hitBox.position.y + player.hitBox.height >= fly.position.y && player.hitBox.position.y <=  fly.position.y + fly.height //hitbox vertical
+&& player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+)
+{
+player.isHitting = false
+console.log('hit');
+fly.velocity.x=0
+fly.takeHit()
 }
-
+if (player.hitBox.position.x + player.hitBox.width >= fly2.position.x && player.hitBox.position.x <= fly2.position.x + fly2.width//hitbox lateral
+&& player.hitBox.position.y + player.hitBox.height >= fly2.position.y && player.hitBox.position.y <=  fly2.position.y + fly2.height //hitbox vertical
+&& player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+)
+{
+player.isHitting = false
+console.log('hit');
+fly2.velocity.x=0
+fly2.takeHit()
+}
+if (player.hitBox.position.x + player.hitBox.width >= fly3.position.x && player.hitBox.position.x <= fly3.position.x + fly3.width//hitbox lateral
+&& player.hitBox.position.y + player.hitBox.height >= fly3.position.y && player.hitBox.position.y <=  fly3.position.y + fly3.height //hitbox vertical
+&& player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+)
+{
+player.isHitting = false
+console.log('hit');
+fly3.velocity.x=0
+fly3.takeHit()
+}
+}
 animate()
 
  window.addEventListener('keydown',(event) => {
@@ -400,3 +531,4 @@ animate()
             break
     }
  })
+
