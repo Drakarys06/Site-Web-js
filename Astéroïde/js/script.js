@@ -2,7 +2,6 @@ import Vaisseau from "./vaisseau.js";
 import Asteroide from "./asteroide.js";
 import { inputStates, definitEcouteurs } from "./ecouteurs.js";
 import Bullet from "./bullet.js";
-import PetitAsteroide from "./petitAsteroide.js";
 
 window.onload = menu;
 let canvas, ctx;
@@ -51,13 +50,13 @@ function init() {
     asteroide[2] = new Asteroide();
     asteroide[2].x = 500;
     asteroide[2].y = 500;
-    petit[0] = new PetitAsteroide();
+    petit[0] = new Asteroide();
     petit[0].x = 100;
     petit[0].y = 100;
-    petit[1] = new PetitAsteroide();
+    petit[1] = new Asteroide();
     petit[1].x = 100;
     petit[1].y = 100;
-    petit[2] = new PetitAsteroide();
+    petit[2] = new Asteroide();
     petit[2].x = 100;
     petit[2].y = 100;
     // on démarre l'animation
@@ -74,7 +73,7 @@ function mainloop() {
     for (var i = 0; i < asteroide.length; i++)
         asteroide[i].draw(ctx);
     for (var i = 0; i < petit.length; i++)
-        petit[i].draw(ctx);
+        petit[i].drawPetit(ctx);
     drawScore(ctx);
 
     // 3 on met à jour les objets
@@ -107,7 +106,7 @@ function mainloop() {
         detectionBulletsAsteroide();
         vaisseau.avance(canvas.width, canvas.height);
         for (var i = 0; i < petit.length; i++)
-            petit[i].deplacement(canvas.width, canvas.height);
+            petit[i].deplacementPetit(canvas.width, canvas.height);
         for (var i = 0; i < asteroide.length; i++)
             asteroide[i].deplacement(canvas.width, canvas.height);
         // 4 on appelle la fonction mainloop dans 16ms
@@ -142,7 +141,7 @@ function detectionBulletsPetitAsteroide() {
             if (distance < 10 + 5) {
                 var audio = document.getElementById("Explosion");
                 audio.play();
-                petit[j] = new PetitAsteroide();
+                petit[j] = new Asteroide();
                 score += 3;
             }
         }
@@ -212,13 +211,13 @@ function restorer() {
     asteroide[2] = new Asteroide();
     asteroide[2].x = 500;
     asteroide[2].y = 500;
-    petit[0] = new PetitAsteroide();
+    petit[0] = new Asteroide();
     petit[0].x = 100;
     petit[0].y = 100;
-    petit[1] = new PetitAsteroide();
+    petit[1] = new Asteroide();
     petit[1].x = 100;
     petit[1].y = 100;
-    petit[2] = new PetitAsteroide();
+    petit[2] = new Asteroide();
     petit[2].x = 100;
     petit[2].y = 100;
     score = 0;
