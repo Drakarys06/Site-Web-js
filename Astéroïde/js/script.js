@@ -83,22 +83,16 @@ function mainloop() {
     if (inputStates.droite) {
         vaisseau.tournerDroite();
     }
-    var audioMotor = document.getElementById("motor");
     if (inputStates.haut) {
         vaisseau.accelere();
         vaisseau.drawReacteur(ctx);
-        audioMotor.play();
     } else {
         vaisseau.deccelere();
-        audioMotor.pause();
     }
     if (inputStates.espace) {
         vaisseau.tirer(Date.now());
     }
     if (detectionVaisseauAsteroide() || detectionVaisseauPetitAsteroide()) {
-        var audio = document.getElementById("gameOver");
-        audioMotor.pause();
-        audio.play();
         gameOver(ctx);
     }
     else {
@@ -122,8 +116,6 @@ function detectionBulletsAsteroide() {
             var dyba = vaisseau.bullets[i].y - asteroide[j].y;
             var distance = Math.sqrt(dxba * dxba + dyba * dyba);
             if (distance < 40 + 5) {
-                var audio = document.getElementById("Explosion");
-                audio.play();
                 asteroide[j] = new Asteroide();
                 score++;
             }
@@ -139,8 +131,6 @@ function detectionBulletsPetitAsteroide() {
             var dyba = vaisseau.bullets[i].y - petit[j].y;
             var distance = Math.sqrt(dxba * dxba + dyba * dyba);
             if (distance < 10 + 5) {
-                var audio = document.getElementById("Explosion");
-                audio.play();
                 petit[j] = new Asteroide();
                 score += 3;
             }
