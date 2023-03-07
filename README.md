@@ -1,11 +1,10 @@
 # Site-Web-js
 On créé un site web avec différents jeu, jouable dessus.
-Astéroïde, 2048, et le game on web
-
+Astéroïde, Rage, et le début du game on web
 
 Jeux : 
 
-2048 : 
+Rage : 
  - Regle : Grille de 4x4, le but est d’obtenir le meilleur score possible 2048 avec le moins de coup possible, chaque tour une case de 2 est ajouté, quand 2 cases de même valeur se touche en allant dans la même direction s’additionne, les valeurs des cases sont : 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048. les cases se déplacent dans 4 sens (Haut, bas, gauche, droite)
  - Difficulté : La difficulté augmente au fur et a mesure vu qu'on dispose de moins en moins de place pour additionner les cases
  - Score : Valeur atteinte si perdu Si atteint 2048 => nombre de coup effectué
@@ -44,11 +43,9 @@ Thomas LeChill : 21 ans, travailleur,
  
   - 1 : Lena cherche à se connecter au site, donc elle click sur le bouton Connection
   - 2 : Enzo cherche à consulter le classement général, il click donc sur le page Classement afin de voir le classement de tout les jeux
-  - 3 : Nicolas cherche à voir le nombre de succès qu'il a débloqué en jouant, il va donc choisir d'aller sur la page succès afin de les voirs
-  - 4 : Nicolas cherche à voir le nombre de succès qu'il lui reste à débloqué, il va donc choisir d'aller sur la page succès afin de les voirs
-  - 5 : Thomas cherche à jouer à 2048, il clique sur la page du jeu, il conculte les règles afin d'être sur de comprendre le jeu, une fois qu'il a bien compris les règles, il clique sur le bouton jouer au dessus de la grille, il déplace les tuiles, finit sa partie et effectu un score qui s'affiche.
-  - 6 : Lena cherche à jouer à Astéroïde, elle clique sur la page du jeu, sélectionne le mode de jeu solo et lance une partie. 
-  - 7 : Enzo et Thomas cherche à savoir qui est le meilleur sur le jeu Astéroïde, ils lancent donc une partie en mode duel, afin de s'affronter.
+  - 3 : Nicolas cherche à voir le nombre de succès qu'il a débloqué en jouant, i lva donc les consulter en dessous de la page de jeu
+  - 4 : Thomas cherche à jouer à Rage, il clique sur la page du jeu, il conculte les règles afin d'être sur de comprendre le jeu, une fois qu'il a bien compris les règles, il clique sur le bouton jouer.
+  - 5 : Lena cherche à jouer à Astéroïde, elle clique sur la page du jeu et lance une partie. 
   
   
   Modèle de tâche : 
