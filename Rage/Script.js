@@ -272,8 +272,8 @@ const enemy = new Character({
         y : 400,
     },
     velocity : {
-        x : 0,
-        y:0,
+        x : 2,
+        y:2,
     },
     imageSrc: './assets/Trashmob4/Flight.png',
     framesMax:8,
@@ -304,8 +304,8 @@ const fly2 = new Monsterfly({
         y : 400,
     },
     velocity : {
-        x : 0,
-        y:0,
+        x : 2,
+        y:2,
     },
     imageSrc: './assets/Trashmob4/Flight.png',
     framesMax:8,
@@ -336,8 +336,8 @@ const fly3 = new Monsterfly({
         y : 400,
     },
     velocity : {
-        x : 0,
-        y:0,
+        x : 2,
+        y:2,
     },
     imageSrc: './assets/Trashmob4/Flight.png',
     framesMax:8,
@@ -413,10 +413,6 @@ function animate() {
     //vitesse du joueur inactif
     player.velocity.x = 0
 
-    //vitesse des monstres
-    enemy.velocity.x=0
-    enemy2.velocity.x=0
-
     if(enemy.velocity.x !=0){
     enemy.switchSprite('Walk')
     enemy2.switchSprite('Walk')
@@ -430,6 +426,7 @@ function animate() {
     fly2.switchSprite("Idle")
     fly3.switchSprite("Idle")
     }
+   
     // Mouvement du Joueur
     if (keys.q.pressed && player.lastKey === 'q') {
         player.velocity.x = -5
@@ -461,7 +458,6 @@ function animate() {
 {
 player.isHitting = false
 console.log('hit');
-enemy2.velocity.x=0
 enemy2.takeHit()
 //Une seule attaque sera reconnue par le boutton d'attack pressé
 }
@@ -472,8 +468,8 @@ if (player.hitBox.position.x + player.hitBox.width >= fly.position.x && player.h
 {
 player.isHitting = false
 console.log('hit');
-fly.velocity.x=0
 fly.takeHit()
+fly.position.y=100
 }
 if (player.hitBox.position.x + player.hitBox.width >= fly2.position.x && player.hitBox.position.x <= fly2.position.x + fly2.width//hitbox lateral
 && player.hitBox.position.y + player.hitBox.height >= fly2.position.y && player.hitBox.position.y <=  fly2.position.y + fly2.height //hitbox vertical
@@ -482,22 +478,23 @@ if (player.hitBox.position.x + player.hitBox.width >= fly2.position.x && player.
 {
 player.isHitting = false
 console.log('hit');
-fly2.velocity.x=0
 fly2.takeHit()
+fly2.position.x =200
+
 }
 if (player.hitBox.position.x + player.hitBox.width >= fly3.position.x && player.hitBox.position.x <= fly3.position.x + fly3.width//hitbox lateral
 && player.hitBox.position.y + player.hitBox.height >= fly3.position.y && player.hitBox.position.y <=  fly3.position.y + fly3.height //hitbox vertical
-&& player.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+&& player.isHitting //Ici on appelle qued la collision ne suffit pas à être attaqué il faut clicker pour attaquer
 )
 {
 player.isHitting = false
 console.log('hit');
-fly3.velocity.x=0
 fly3.takeHit()
+fly3.position.x =100
 }
 }
 animate()
-
+// Ecouteurs
  window.addEventListener('keydown',(event) => {
     switch (event.key) {
         case 'd' :

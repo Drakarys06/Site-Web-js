@@ -30,14 +30,22 @@ class Monsterfly extends Sprite {
                 spritesdiffs[sprite].image = new Image();
                 spritesdiffs[sprite].image.src = spritesdiffs[sprite].imageSrc
             }
-        }
-        
+        } 
         update(){
             this.draw()
             this.idlemov()
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
-    
+             if(this.position.x==1550){
+                this.velocity.x=-this.velocity.x
+            } else if (this.position.x==0){
+                this.velocity.x=-this.velocity.x
+            }
+            if(this.position.y==680){
+                this.velocity.y=-this.velocity.y
+            } else if (fly.position.y==-100){
+                this.velocity.y=-this.velocity.y
+            }
         }
         attack() {
             this.switchSprite('Attack')
@@ -50,7 +58,7 @@ class Monsterfly extends Sprite {
             this.switchSprite('Take_Hit')
     
         }
-    
+      
         switchSprite (sprite) {
             if (this.image === this.spritesdiffs.Attack.image && this.frama<this.spritesdiffs.Attack.framesMax-1 ) 
         return 
