@@ -4,7 +4,7 @@ const gravity = 0.98;
 
 c.fillRect(0,0,canvas.width, canvas.height)
 let score =0
-
+let vie=3
 const life = new Sprite({
     position : {
         x:50,
@@ -586,6 +586,7 @@ if(player.takeHit)
 c.font = "30px Arial";
 c.fillStyle = "white";
 c.fillText(`Score : ${score}` , canvas.width - 1500, canvas.height -870);
+c.fillText(`Vie : ${vie}` , canvas.width - 1620, canvas.height -870);
 }
 animate()
 // Ecouteurs
