@@ -305,7 +305,7 @@ const fly2 = new Monsterfly({
     },
     velocity : {
         x : 2,
-        y:2,
+        y:-2,
     },
     imageSrc: './assets/Trashmob4/Flight.png',
     framesMax:8,
@@ -336,7 +336,7 @@ const fly3 = new Monsterfly({
         y : 400,
     },
     velocity : {
-        x : 2,
+        x : -2,
         y:2,
     },
     imageSrc: './assets/Trashmob4/Flight.png',
@@ -363,6 +363,37 @@ const fly3 = new Monsterfly({
     }
     }
 )
+const goblin = new Goblin({
+    position : {
+        x : 0,
+        y:650,
+    },
+    velocity : {
+        x :2,
+        y:0
+    },
+    imageSrc : './assets/Trashmob3/Attack.png',
+    framesMax:8,
+    scale:2,
+    spritesdiffs: {
+        Idle: {
+            imageSrc: './assets/Trashmob3/Attack.png',
+            framesMax: 8,
+        },
+        Take_Hit: {
+            imageSrc: './assets/Trashmob3/Take Hit.png',
+            framesMax:4
+        },
+        Attack: {
+            imageSrc: './assets/Trashmob3/Attack.png',
+            framesMax:8,
+        },
+        Death: {
+            imageSrc: './assets/Trashmob3/Death.png',
+            framesMax:4,
+        }
+    }
+})
 console.log(player)
 
 const keys = {
@@ -409,23 +440,26 @@ function animate() {
     fly.update();
     fly2.update();
     fly3.update();
+    goblin.update();
 
     //vitesse du joueur inactif
     player.velocity.x = 0
-
     if(enemy.velocity.x !=0){
-    enemy.switchSprite('Walk')
-    enemy2.switchSprite('Walk')
-    fly.switchSprite("Flight")
-    fly2.switchSprite("Flight")
-    fly3.switchSprite("Flight")
-    } else {
-    enemy.switchSprite('Idle')
-    enemy2.switchSprite('Idle')
-    fly.switchSprite("Idle")
-    fly2.switchSprite("Idle")
-    fly3.switchSprite("Idle")
-    }
+        enemy.switchSprite('Walk')
+        enemy2.switchSprite('Walk')
+        fly.switchSprite("Flight")
+        fly2.switchSprite("Flight")
+        fly3.switchSprite("Flight")
+        goblin.switchSprite("Attack")
+        } else {
+        enemy.switchSprite('Idle')
+        enemy2.switchSprite('Idle')
+        fly.switchSprite("Idle")
+        fly2.switchSprite("Idle")
+        fly3.switchSprite("Idle")
+        goblin.switchSprite("Idle")
+        }
+    
    
     // Mouvement du Joueur
     if (keys.q.pressed && player.lastKey === 'q') {
@@ -491,6 +525,16 @@ player.isHitting = false
 console.log('hit');
 fly3.takeHit()
 fly3.position.x =100
+}
+if (player.hitBox.position.x + player.hitBox.width >= goblin.position.x && player.hitBox.position.x <= goblin.position.x + goblin.width//hitbox lateral
+&& player.hitBox.position.y + player.hitBox.height >= goblin.position.y && player.hitBox.position.y <=  goblin.position.y + goblin.height //hitbox vertical
+&& player.isHitting //Ici on appelle qued la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+)
+{
+player.isHitting = false
+console.log('hit');
+goblin.takeHit()
+goblin.position.x=-150
 }
 }
 animate()
