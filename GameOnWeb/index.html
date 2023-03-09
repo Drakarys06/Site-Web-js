@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="../../CSS/site.css" type="text/css" rel="stylesheet" />
+    <title>GameOnWeb</title>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li data-tab-target="#home"><a href="../Html/index.html">Home</a></li>
+            <li data-tab-target="#about" class="deroulant"><a href="#">Jeux &ensp;</a>
+                <ul class="sous">
+                    <li><a href="../Astéroïde/index.html">Astéroïde</a></li>
+                    <li><a href="../Rage/index.html">Rage</a></li>
+                    <li><a href="./index.html">Game On Web</a></li>
+                </ul>
+            </li>
+            <li data-tab-target="#succes"><a href="#">Succès</a></li>
+            <li data-tab-target="#classement"><a href="#">Classement</a></li>
+            <li data-tab-target="#Connection"><a href="../Connection/Html/index.html">Se
+                    Connecter</a></li>
+        </ul>
+    </nav>
+    <canvas id="renderCanvas" touch-action="none" height="700" width="1000"></canvas>
+    <!-- touch-action="none" for best results from PEP -->
+
+    <script>
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+
+        // Add your code here matching the playground format
+        const createScene = function () {
+            const scene = new BABYLON.Scene(engine);
+
+
+
+            var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+            camera.setTarget(BABYLON.Vector3.Zero());
+            camera.attachControl(canvas, true);
+
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+
+            light.intensity = 0.8;
+
+            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2 }, scene);
+
+            sphere.position.z = 3;
+            sphere.position.x = -4;
+            sphere.position.y = 1;
+
+            BABYLON.MeshBuilder.CreateBox("box", { height: 5, width: 6, depth: 0.5 }, scene);
+
+            var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 20, height: 20 }, scene);
+
+            return scene;
+        };
+
+        const scene = createScene(); //Call the createScene function
+
+        // Register a render loop to repeatedly render the scene
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+
+        // Watch for browser/canvas resize events
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+
+</body>
+
+</hmtl>

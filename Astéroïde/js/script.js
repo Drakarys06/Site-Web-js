@@ -9,6 +9,7 @@ let vaisseau;
 let asteroide = [];
 let score = 0;
 let petit = [];
+let meilleurScore = 0;
 
 function menu(){
     canvas = document.querySelector("#myCanvasAst");
@@ -168,13 +169,15 @@ function drawScore() {
 }
 
 function gameOver(ctx) {
-
+    if (score > meilleurScore)
+        meilleurScore = score;
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "30px Arial";
     ctx.fillStyle = "000000";
     ctx.fillText("GAME OVER", 100, 200);
     ctx.fillText("SCORE: " + score, 100, 250);
+    ctx.fillText("Meilleur score: " + meilleurScore, 300, 250);
     ctx.fillText("POUR REJOUER, APPUYER SUR ENTRER", 100, 300);
     ctx.fillText("COMMANDE : ", 100, 350);
     ctx.fillText("Flèche gauche : tourner à gauche ", 100, 400);
