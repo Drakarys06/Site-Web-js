@@ -11,13 +11,13 @@ class Goblin extends Sprite {
             super({position,imageSrc,scale,framesMax})
             this.position = position
             this.velocity = velocity
-            this.height = 150
-            this.width = 50
+            this.height = 100
+            this.width = 20
             this.lastKey
             this.hitBox = {
                 position : this.position ,
-                width : 80,
-                height : 150
+                width : 0,
+                height : 100
             }
             this.color =color
             this.isHitting
@@ -31,6 +31,7 @@ class Goblin extends Sprite {
                 spritesdiffs[sprite].image.src = spritesdiffs[sprite].imageSrc
             }
         } 
+      
         update(){
             this.draw()
             this.idlemov()

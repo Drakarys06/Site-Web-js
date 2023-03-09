@@ -25,6 +25,7 @@ class Character extends Sprite {
             this.framevelocity=0
             this.frametime=5
             this.spritesdiffs = spritesdiffs
+            this.health = 2
 
             for ( const sprite in this.spritesdiffs) {
                 spritesdiffs[sprite].image = new Image();
@@ -61,7 +62,15 @@ class Character extends Sprite {
     }
     takeHit(){
         this.switchSprite('Take_Hit')
+        this.health=this.health-1
 
+    }
+    Die(){
+        if(this.health==0){
+            this.switchSprite("Death")
+        }else{
+            this.switchSprite('Take_Hit')
+        }
     }
 
     switchSprite (sprite) {

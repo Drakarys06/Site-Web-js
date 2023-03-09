@@ -3,6 +3,26 @@ const c = canvas.getContext("2d");
 const gravity = 0.98;
 
 c.fillRect(0,0,canvas.width, canvas.height)
+let score =0
+
+const life = new Sprite({
+    position : {
+        x:50,
+        y:5
+    },
+    imageSrc:'./assets/life/HeartsFrame1.png',
+    scale:2,
+    framesMax:1,
+    spritesdiffs: {
+    Half:{
+        imageSrc:'./assets/life/HeartsFrame3.png',
+        framesMax:1,
+    },
+    Dead:{
+        imageSrc:'./assets/life/HeartsFrame3.png',
+        framesMax:1,
+    }}
+})
 const background = new Sprite({
     position : {
         x:0,
@@ -425,6 +445,7 @@ function animate() {
     planche3.update()
     planche4.update()
     planche5.update()
+    life.update()
 
 
 
@@ -442,6 +463,7 @@ function animate() {
     fly3.update();
     goblin.update();
 
+
     //vitesse du joueur inactif
     player.velocity.x = 0
     if(enemy.velocity.x !=0){
@@ -450,15 +472,18 @@ function animate() {
         fly.switchSprite("Flight")
         fly2.switchSprite("Flight")
         fly3.switchSprite("Flight")
-        goblin.switchSprite("Attack")
+        goblin.switchSprite("Attack")  
+        goblin.attack()
         } else {
         enemy.switchSprite('Idle')
         enemy2.switchSprite('Idle')
         fly.switchSprite("Idle")
         fly2.switchSprite("Idle")
         fly3.switchSprite("Idle")
-        goblin.switchSprite("Idle")
+        goblin.switchSprite("Idle") 
+        goblin.attack()
         }
+      
     
    
     // Mouvement du Joueur
@@ -483,6 +508,7 @@ function animate() {
     console.log('hit');
     enemy.velocity.x=0
     enemy.takeHit()
+    score++
     //Une seule attaque sera reconnue par le boutton d'attack pressé
     }
     if (player.hitBox.position.x + player.hitBox.width >= enemy2.position.x && player.hitBox.position.x <= enemy2.position.x + enemy2.width//hitbox lateral
@@ -493,6 +519,7 @@ function animate() {
 player.isHitting = false
 console.log('hit');
 enemy2.takeHit()
+score++
 //Une seule attaque sera reconnue par le boutton d'attack pressé
 }
 if (player.hitBox.position.x + player.hitBox.width >= fly.position.x && player.hitBox.position.x <= fly.position.x + fly.width//hitbox lateral
@@ -504,6 +531,7 @@ player.isHitting = false
 console.log('hit');
 fly.takeHit()
 fly.position.y=100
+score =score+2
 }
 if (player.hitBox.position.x + player.hitBox.width >= fly2.position.x && player.hitBox.position.x <= fly2.position.x + fly2.width//hitbox lateral
 && player.hitBox.position.y + player.hitBox.height >= fly2.position.y && player.hitBox.position.y <=  fly2.position.y + fly2.height //hitbox vertical
@@ -514,6 +542,7 @@ player.isHitting = false
 console.log('hit');
 fly2.takeHit()
 fly2.position.x =200
+score =score+2
 
 }
 if (player.hitBox.position.x + player.hitBox.width >= fly3.position.x && player.hitBox.position.x <= fly3.position.x + fly3.width//hitbox lateral
@@ -525,6 +554,7 @@ player.isHitting = false
 console.log('hit');
 fly3.takeHit()
 fly3.position.x =100
+score =score+2
 }
 if (player.hitBox.position.x + player.hitBox.width >= goblin.position.x && player.hitBox.position.x <= goblin.position.x + goblin.width//hitbox lateral
 && player.hitBox.position.y + player.hitBox.height >= goblin.position.y && player.hitBox.position.y <=  goblin.position.y + goblin.height //hitbox vertical
@@ -535,7 +565,27 @@ player.isHitting = false
 console.log('hit');
 goblin.takeHit()
 goblin.position.x=-150
+score =score+10
 }
+if (goblin.hitBox.position.x + goblin.hitBox.width >= player.position.x && goblin.hitBox.position.x <= player.position.x + goblin.width//hitbox lateral
+&& goblin.hitBox.position.y + goblin.hitBox.height >= player.position.y && goblin.hitBox.position.y <=  player.position.y + goblin.height //hitbox vertical
+&& goblin.isHitting //Ici on appelle que la collision ne suffit pas à être attaqué il faut clicker pour attaquer
+)
+{
+goblin.isHitting = false
+console.log('hit');
+player.takeHit();
+console.log('dead')
+score =score-20
+if(player.takeHit) 
+{
+   
+}
+//Une seule attaque sera reconnue par le boutton d'attack pressé
+}
+c.font = "30px Arial";
+c.fillStyle = "white";
+c.fillText(`Score : ${score}` , canvas.width - 1500, canvas.height -870);
 }
 animate()
 // Ecouteurs
