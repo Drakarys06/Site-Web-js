@@ -8,11 +8,12 @@
     <link href="../CSS/site.css" type="text/css" rel="stylesheet" />
     <title>Accueil</title>
 </head>
-    <header>
-        <div class ="wrapper">
-            <h1>Play2games <span class ="red">.</span></h1>
-        </div>
-    </header>
+<header>
+    <div class="wrapper">
+        <h1>Play2games <span class="red">.</span></h1>
+    </div>
+</header>
+
 <body>
     <nav>
         <ul>
@@ -25,37 +26,27 @@
                 </ul>
             </li>
             <li data-tab-target="#succes"><a href="#">Succès</a></li>
-            <li data-tab-target="#diplome"><a href="#">Classement</a></li>
+            <li data-tab-target="#classement"><a href="#">Classement</a></li>
+            <li data-tab-target="#Connection"><a href="../Connection/Html/index.html">Se
+                    Connecter</a></li>
         </ul>
     </nav>
 
-    <div class="tab-content">
-        <div id="Home" data-tab-content class="active">
-            <section>
-                <div class="container">
-                    <div class="body-box">
-                        <div class="body-text">
-                            <h1>Bienvenue sur le site de <br> <span>Thibault CANAVAGGIO & Thomas CHOUBRAC</span></h1>
-                            <p> laissez vous embarqué dans dans le monde des 12</p>
-                            <button class=".btn">Explore!</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="wrapper">
+        <div class="game">
+            <div class="div1">
+                <p>Astéroide</p>
+                <a href="../Astéroïde/index.html"><img src="../Images/asteroid.jpg" alt="Astéroïde"></a>
+            </div>
+            <div class="div2">
+                <p>Rage</p>
+                <a href="../Rage/index.html"><img src="../Images/Rage.jpg" alt="Rage"></a>
+            </div>
+            <div class="div3">
+                <p>GameOnWeb</p>
+                <a href="../GameOnWeb/index.html"><img src="../Images/GameOnWeb.png" alt="GameOnWeb"></a>
+            </div>
         </div>
-    </div>
-
-    <div id="About" data-tab-content>
-        <h1> jean michelle</h1>
-        <p>25 ans et toujours aussi con</p>
-    </div>
-    <div id="Contact" data-tab-content>
-        <h1>face de book</h1>
-        <p>blabla</p>
-    </div>
-    <div id="Diplome" data-tab-content>
-        <h1>BAC +30</h1>
-        <p>blabla</p>
     </div>
 </body>
 </hmtl>
