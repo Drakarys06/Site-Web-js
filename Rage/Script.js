@@ -389,7 +389,7 @@ const goblin = new Goblin({
         y:650,
     },
     velocity : {
-        x :2,
+        x :2.5,
         y:0
     },
     imageSrc : './assets/Trashmob3/Attack.png',
@@ -554,7 +554,7 @@ player.isHitting = false
 console.log('hit');
 fly3.takeHit()
 fly3.position.x =100
-score =score+2
+score =score+5
 }
 if (player.hitBox.position.x + player.hitBox.width >= goblin.position.x && player.hitBox.position.x <= goblin.position.x + goblin.width//hitbox lateral
 && player.hitBox.position.y + player.hitBox.height >= goblin.position.y && player.hitBox.position.y <=  goblin.position.y + goblin.height //hitbox vertical
