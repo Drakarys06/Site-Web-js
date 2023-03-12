@@ -16,7 +16,13 @@ Astéroïde :
  - Difficulté : De plus en plus d'astéroïdes apparraissent dans le temps
  - Score : nombre d’astéroïdes détruits + un ratio selon le temps
  - Scénario : Le joueur dispose des touches directionnelles pour se déplacer dans le rectangle et de la barre espace pour pouvoir tirer sur les astéroïdes
- - Succès : Tenir 5 minutes & 10 minutes, détruire plus de 10/50/100/500/1000 astéroïdes, Obtenir plus de 100/250/500/1000 de score. 
+ - Succès : Tenir 5 minutes & 10 minutes, détruire plus de 10/50/100/500/1000 astéroïdes, Obtenir plus de 100/250/500/1000 de score.
+
+ Plantodex (GamesOnWeb):
+ -Regle : jeu de plateforme, on l'ou doit récupérer des plantes dans chaque niveau pour compléter son plantodex.
+ - Score : Dépendra du nombre de plantes récupérer ansi que le temps mis pour finir le niveau.
+ - Scénario : Le joueur dispose des touches directionelles pour se déplacer dans les niveaux ainsi que la barre d'espace pour sauter.
+ - Succès : Récupérer toutes les plantes des différents niveau ainsi que finir les niveaux dans un temps donné.
 
 
 Persona : 
