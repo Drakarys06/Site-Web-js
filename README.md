@@ -55,7 +55,7 @@ Thomas LeChill : 21 ans, travailleur,
   
   
   Modèle de tâche : 
-  https://www.mindmeister.com/map/2560780069
+  https://miro.com/welcomeonboard/QTk5bXdzQ3ZWWHpJbDRXZ25zaVprd2ozdlhwRkNNbmhpTFAyQk1pVzZpY1lUQW1LMnd0anVZMUtNdUgwejBnaXwzNDU4NzY0NTE2NzM2NzE3OTEzfDI=?share_link_id=962831601833
   
   Maquette : 
   https://www.figma.com/proto/YTRgS3jYOJMmbSLXmcPQF9/Play-2-Games?node-id=5%3A26&scaling=scale-down&page-id=0%3A1&starting-point-node-id=5%3A26
